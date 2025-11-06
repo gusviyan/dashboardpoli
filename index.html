@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rotasi Halaman Lokal</title>
+<style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: #000;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+</style>
+</head>
+<body>
+  <iframe id="viewer" src="http://192.168.0.103:8080/jadwal"></iframe>
+
+  <script>
+    // Daftar URL lokal
+    const urls = [
+      "http://192.168.0.103:8080adwal",
+      "http://192.168.0.11/LIVE/Module/kiosk/BedMonitoringDisplayGeneral.aspx"
+    ];
+    let index = 0;
+    const viewer = document.getElementById("viewer");
+
+    // Ganti halaman setiap 5 menit (300000 ms)
+    setInterval(() => {
+      index = (index + 1) % urls.length;
+      viewer.src = urls[index];
+    }, 300000); // 300 detik
+
+  </script>
+</body>
+</html>
